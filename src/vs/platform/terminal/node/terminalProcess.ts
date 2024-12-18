@@ -83,6 +83,15 @@ const generalShellTypeMap = new Map<string, GeneralShellType>([
 	['nu', GeneralShellType.NuShell],
 
 ]);
+/**
+ * Manages the creation and lifecycle of terminal processes on Node.js.
+ * This class is responsible for:
+ * - Spawning terminal processes using node-pty
+ * - Managing process titles and shell detection
+ * - Handling process exit and shutdown
+ * - Managing terminal dimensions and resizing
+ * - Implementing flow control for process I/O
+ */
 export class TerminalProcess extends Disposable implements ITerminalChildProcess {
 	readonly id = 0;
 	readonly shouldPersist = false;
