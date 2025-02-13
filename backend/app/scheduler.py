@@ -18,12 +18,25 @@ async def daily_market_update():
 async def daily_programming_news():
     """Daily AI programming news update task that runs at 20:30"""
     try:
-        # TODO: Implement AI programming news collection in next step
-        news_summary = "AI编程动态将在下一步实现"
+        # Collect programming news
+        from .programming_news import get_programming_news_summary
+        news_data = await get_programming_news_summary()
         
         # Send email notification
         subject = f"AI编程动态 - {datetime.now().strftime('%Y-%m-%d')}"
-        await send_ai_programming_news(subject, news_summary)
+        await send_ai_programming_news(subject, news_data["summary"])
+        
+        # Store in database
+        from .models import AINews
+        from .services import db
+        
+        news_item = AINews(
+            title=subject,
+            content=news_data["summary"],
+            source="Programming News",
+            published_date=datetime.now()
+        )
+        db.add_news(news_item)
         
         print(f"Programming news update completed at {datetime.now()}")
     except Exception as e:
