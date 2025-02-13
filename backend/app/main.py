@@ -4,11 +4,12 @@ from typing import List, Dict
 import os
 from datetime import datetime
 
-from .models import Schedule, AINews, ScheduleResponse, NewsResponse
+from .models import AINews
 from .services import db
 from .market_data import get_daily_market_summary
 from .scheduler import init_scheduler
 from .config import get_settings
+from .programming_news import get_programming_news_summary
 
 app = FastAPI()
 
