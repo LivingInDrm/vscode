@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "ai-assistant"
+version = "0.1.0"
+description = ""
+authors = ["Devin AI <158243242+devin-ai-integration[bot]@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.115.8"
+uvicorn = "^0.34.0"
+fastapi-mail = "^1.4.2"
+python-dotenv = "^1.0.1"
+apscheduler = "^3.11.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
